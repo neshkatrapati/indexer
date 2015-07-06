@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Indexer by neshkatrapati</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Indexer</h1>
+        <p>Given a file, Compute the index and Retrieve the specific line number on demand</p>
+        <p class="view"><a href="https://github.com/neshkatrapati/indexer">View the Project on GitHub <small>neshkatrapati/indexer</small></a></p>
+        <ul>
+          <li><a href="https://github.com/neshkatrapati/indexer/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/neshkatrapati/indexer/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/neshkatrapati/indexer">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="indexer" class="anchor" href="#indexer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Indexer</h1>
+
+<h2>
+<a id="what-" class="anchor" href="#what-" aria-hidden="true"><span class="octicon octicon-link"></span></a>What ?</h2>
+
+<p>Given a large text file, indexer makes an index and stores it in binary. When a specific line is needed, it hits the index first, then the original file.</p>
+
+<h2>
+<a id="why-" class="anchor" href="#why-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why ?</h2>
+
+<p>For huge files, loading up particular lines on demand is too time taking in the simple way. Indexer is one approach to load them faster.</p>
+
+<h2>
+<a id="how-to-run--" class="anchor" href="#how-to-run--" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to run  ?</h2>
+
+<blockquote>
+<h4>
+<a id="compile" class="anchor" href="#compile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compile</h4>
+
+<pre><code>$ gcc index.c -o index.o
+</code></pre>
+
+<h4>
+<a id="make-the-index" class="anchor" href="#make-the-index" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make the index</h4>
+
+<pre><code>$ ./index.o -w source_file index_file
+</code></pre>
+
+<h4>
+<a id="read-a-line" class="anchor" href="#read-a-line" aria-hidden="true"><span class="octicon octicon-link"></span></a>Read a line</h4>
+
+<pre><code>$ ./index.o -r -l line_number source_file index_file
+</code></pre>
+</blockquote>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/neshkatrapati">neshkatrapati</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
