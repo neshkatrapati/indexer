@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-
+#include <string.h>
 /**
 A function which takes a source file, loads up its index, goes to the desired line
 and fetches the line from the source file.
@@ -42,6 +42,7 @@ char * read_from_index(FILE *source_file, FILE *index_file, long desired_line) {
   char * buf = malloc(sizeof(char) * (end -begin));
   buf[0] = '\0';
   fread(buf, end - begin, 1, source_file);
+  buf[strlen(buf)] = '\0';
   //printf("%s", buf);
   return buf;
 
