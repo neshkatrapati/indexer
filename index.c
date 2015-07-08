@@ -100,16 +100,27 @@ int main(int argc, char  ** argv) {
 
     if(arguments.line_number != -2) {
       char *buf = read_from_index(source_file, index_file, arguments.line_number);
-      printf("%s", buf);
-      free(buf);
+      if (buf != NULL){
+        printf("%s", buf);
+        free(buf);
+      } else {
+        printf("EOF\n");
+      }
+
     }
     else if (arguments.random_count != -2) {
       long i;
       for (i = 0; i < arguments.random_count; i++) {
         int line_number  = rand() % 10000;
         char *buf = read_from_index(source_file, index_file, line_number);
-        printf("%s", buf);
-        free(buf);
+        if (buf != NULL){
+          printf("%s", buf);
+          free(buf);
+        } else {
+          printf("EOF\n");
+        }
+
+
       }
     }
     else {

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
 /**
 A function which takes a source file, loads up its index, goes to the desired line
@@ -13,12 +14,22 @@ char * read_from_index(FILE *source_file, FILE *index_file, long desired_line) {
   long line_number = 0;
   long begin;
   long end;
-
+  struct stat st;
   /*
     For each line in the source file, a tuple of three 32 bit longs are stored
       -> [line_number, begin, end].
    */
-  fseek(index_file, desired_line*3*sizeof(line_number), SEEK_SET);
+
+  fstat(fileno(index_file), &st);
+  long size = st.st_size;
+  long to_seek = desired_line*3*sizeof(line_number);
+  //printf("%ld %ld\n", to_seek, size );
+  if (to_seek > size){
+    //printf("Greater\n");
+    return NULL;
+  }
+
+  fseek(index_file, to_seek, SEEK_SET);
 
   fread(&line_number,sizeof(line_number),1,index_file);
   fread(&begin,sizeof(begin),1,index_file);
@@ -35,6 +46,8 @@ char * read_from_index(FILE *source_file, FILE *index_file, long desired_line) {
   return buf;
 
 }
+
+
 
 /**
 A function which builds an index file for a given source file
